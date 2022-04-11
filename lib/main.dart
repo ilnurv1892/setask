@@ -1,22 +1,23 @@
+import 'package:authentication_repository/authentication_repository.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:setask/app/bloc_observer.dart';
+import 'package:setask/app/view/app.dart';
+import 'package:setask/firebase_options.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() {
+  return BlocOverrides.runZoned(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
-    );
-  }
+      final authenticationRepository = AuthenticationRepository();
+      await authenticationRepository.user.first;
+      runApp(App(authenticationRepository: authenticationRepository));
+    },
+    blocObserver: AppBlocObserver(),
+  );
 }
