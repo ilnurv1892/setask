@@ -1,0 +1,21 @@
+
+{
+    "@@locale": "en",
+    "setaskOverviewAppBarTitle": "Fly",
+    "@setaskOverviewAppBarTitle": {
+      "description": "Title text"
+    }
+
+    ,   
+    "login": "Login",
+    "home_title": "Home",
+    "settings": "Settings",
+    "email":"email",
+    "wrong_email":" wrong_email",
+    "password":"password",
+    "wrong_password":" wrong_password",
+    "sign_with_google":"Sign with google",
+    "create_account":"Create account"
+   
+   
+  }
