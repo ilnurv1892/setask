@@ -1,19 +1,16 @@
 
 {
     "@@locale": "en",
-    "setaskOverviewAppBarTitle": "Fly",
-    "@setaskOverviewAppBarTitle": {
-      "description": "Title text"
-    }
-
-    ,   
+  
+    "app_title":"SeTask",
+      
     "login": "Login",
     "home_title": "Home",
     "settings": "Settings",
-    "email":"email",
-    "wrong_email":" wrong_email",
-    "password":"password",
-    "wrong_password":" wrong_password",
+    "email":"Email",
+    "wrong_email":"Wrong email",
+    "password":"Password",
+    "wrong_password":"Wrong password",
     "sign_with_google":"Sign with google",
     "create_account":"Create account",
 
@@ -22,8 +19,13 @@
     "english_language":"English",
     "change_theme":"Change Theme",
     "light_theme":"Light",
-    "dark_theme":"Dark"
+    "dark_theme":"Dark",
+    
+    "sign_up":"SIGN UP",
+    "sign_up_app_bar":"SIGN UP",
 
+    "confirm_password":"Confirm password",
+    "password_not_match":"Password not match"
    
    
   }

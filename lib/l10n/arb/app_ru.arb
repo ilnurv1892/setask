@@ -1,10 +1,10 @@
 
 {
     "@@locale": "ru",
-    "setaskOverviewAppBarTitle": "Fly",
-    "@setaskOverviewAppBarTitle": {
-      "description": "Title text"
-    },
+
+
+    "app_title":"SeTask",
+
     "login": "Войти",
     "home_title": "Главная",
     "settings": "Настройки",
@@ -20,5 +20,12 @@
     "english_language":"Английский",
     "change_theme":"Сменить тему",
     "light_theme":"Светлая",
-    "dark_theme":"Темная"
+    "dark_theme":"Темная",
+
+    "sign_up":"Зарегистрироваться",
+    "sign_up_app_bar":"Регистрация",
+
+    "confirm_password":"Подтвердите пароль",
+    "password_not_match":"Пароли не совпадают"
+
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:setask/l10n/l10n.dart';
 import 'package:setask/registration/sign_up/cubit/sign_up_cubit.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -42,6 +43,8 @@ class SignUpForm extends StatelessWidget {
 class _EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocBuilder<SignUpCubit, SignUpState>(
       buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
@@ -50,9 +53,8 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) => context.read<SignUpCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            labelText: 'email',
-            helperText: '',
-            errorText: state.email.invalid ? 'invalid email' : null,
+            labelText: l10n.email,
+            errorText: state.email.invalid ? l10n.wrong_email : null,
           ),
         );
       },
@@ -63,6 +65,8 @@ class _EmailInput extends StatelessWidget {
 class _PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocBuilder<SignUpCubit, SignUpState>(
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
@@ -71,9 +75,8 @@ class _PasswordInput extends StatelessWidget {
           onChanged: (password) => context.read<SignUpCubit>().passwordChanged(password),
           obscureText: true,
           decoration: InputDecoration(
-            labelText: 'password',
-            helperText: '',
-            errorText: state.password.invalid ? 'invalid password' : null,
+            labelText: l10n.password,
+            errorText: state.password.invalid ? l10n.wrong_password : null,
           ),
         );
       },
@@ -84,6 +87,8 @@ class _PasswordInput extends StatelessWidget {
 class _ConfirmPasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocBuilder<SignUpCubit, SignUpState>(
       buildWhen: (previous, current) =>
           previous.password != current.password || previous.confirmedPassword != current.confirmedPassword,
@@ -93,9 +98,8 @@ class _ConfirmPasswordInput extends StatelessWidget {
           onChanged: (confirmPassword) => context.read<SignUpCubit>().confirmedPasswordChanged(confirmPassword),
           obscureText: true,
           decoration: InputDecoration(
-            labelText: 'confirm password',
-            helperText: '',
-            errorText: state.confirmedPassword.invalid ? 'passwords do not match' : null,
+            labelText: l10n.confirm_password,
+            errorText: state.confirmedPassword.invalid ? l10n.password_not_match : null,
           ),
         );
       },
@@ -106,6 +110,8 @@ class _ConfirmPasswordInput extends StatelessWidget {
 class _SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocBuilder<SignUpCubit, SignUpState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
@@ -120,7 +126,7 @@ class _SignUpButton extends StatelessWidget {
                   primary: Colors.orangeAccent,
                 ),
                 onPressed: state.status.isValidated ? () => context.read<SignUpCubit>().signUpFormSubmitted() : null,
-                child: const Text('SIGN UP'),
+                child: Text(l10n.sign_up),
               );
       },
     );
