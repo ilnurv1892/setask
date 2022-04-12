@@ -15,7 +15,15 @@
     "password":"password",
     "wrong_password":" wrong_password",
     "sign_with_google":"Sign with google",
-    "create_account":"Create account"
+    "create_account":"Create account",
+
+    "select_language":"Select Language",
+    "russian_language":"Russian",
+    "english_language":"English",
+    "change_theme":"Change Theme",
+    "light_theme":"Light",
+    "dark_theme":"Dark"
+
    
    
   }

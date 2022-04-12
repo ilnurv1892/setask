@@ -13,5 +13,12 @@
     "password":"Пароль",
     "wrong_password":" Неправильный пароль",
     "sign_with_google":"Войти через google",
-    "create_account":"Создать аккаунт"
+    "create_account":"Создать аккаунт",
+
+    "select_language":"Выбрать язык",
+    "russian_language":"Русский",
+    "english_language":"Английский",
+    "change_theme":"Сменить тему",
+    "light_theme":"Светлая",
+    "dark_theme":"Темная"
   }

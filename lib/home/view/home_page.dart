@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setask/app/bloc/app_bloc.dart';
-import 'package:setask/app/cubit/locale_cubit.dart';
+import 'package:setask/settings/cubit/locale_cubit.dart';
 import 'package:setask/l10n/l10n.dart';
+import 'package:setask/settings/cubit/theme_cubit.dart';
 import 'package:setask/settings/settings.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,7 +29,8 @@ class HomePage extends StatelessWidget {
           IconButton(
             key: const Key('homePage_settings_iconButton'),
             icon: const Icon(Icons.settings),
-            onPressed: () => Navigator.of(context).push(Settings.route(context.read<LocaleCubit>())),
+            onPressed: () =>
+                Navigator.of(context).push(Settings.route(context.read<LocaleCubit>(), context.read<ThemeCubit>())),
           )
         ],
       ),
