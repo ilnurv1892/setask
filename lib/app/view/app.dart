@@ -33,7 +33,7 @@ class App extends StatelessWidget {
             ),
           ),
           BlocProvider<ThemeCubit>(
-            create: (BuildContext context) => ThemeCubit(),
+            create: (BuildContext context) => ThemeCubit()..changeStartTheme(),
           ),
         ],
         child: BlocBuilder<ThemeCubit, ThemeState>(

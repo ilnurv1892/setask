@@ -1,15 +1,24 @@
 part of 'theme_cubit.dart';
 
-abstract class ThemeState extends Equatable {
-  ThemeState(this.theme);
-  final ThemeData theme;
+class ThemeState extends Equatable {
+  ThemeState({this.isDarkTheme = false}) {
+    if (isDarkTheme) {
+      theme = ThemeData.dark();
+    }
+    if (!isDarkTheme) {
+      theme = ThemeData.light();
+    }
+  }
+
+  late ThemeData theme;
+  final bool isDarkTheme;
 
   @override
   List<Object> get props => [theme];
 
-  // bool isDarkTheme = false;
-}
-
-class SelectedTheme extends ThemeState {
-  SelectedTheme(ThemeData theme, isDarkTheme) : super(theme);
+  ThemeState copyWith({
+    bool? isDarkTheme,
+  }) {
+    return ThemeState(isDarkTheme: isDarkTheme!);
+  }
 }
