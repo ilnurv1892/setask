@@ -1,0 +1,17 @@
+
+{
+    "@@locale": "ru",
+    "setaskOverviewAppBarTitle": "Fly",
+    "@setaskOverviewAppBarTitle": {
+      "description": "Title text"
+    },
+    "login": "Войти",
+    "home_title": "Главная",
+    "settings": "Настройки",
+    "email":"Введите адрес почты",
+    "wrong_email":"Неправильная почта",
+    "password":"Пароль",
+    "wrong_password":" Неправильный пароль",
+    "sign_with_google":"Войти через google",
+    "create_account":"Создать аккаунт"
+  }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
+import 'package:setask/l10n/l10n.dart';
 import 'package:setask/registration/sign_in/cubit/login_cubit.dart';
 import 'package:setask/registration/sign_in/cubit/login_state.dart';
 import 'package:setask/registration/sign_up/view/sign_up_page.dart';
@@ -44,6 +45,7 @@ class LoginForm extends StatelessWidget {
 class _EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocBuilder<LoginCubit, LoginState>(
       buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
@@ -52,9 +54,8 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) => context.read<LoginCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            labelText: 'email',
-            helperText: '',
-            errorText: state.email.invalid ? 'invalid email' : null,
+            labelText: l10n.email,
+            errorText: state.email.invalid ? l10n.wrong_email : null,
           ),
         );
       },
@@ -65,6 +66,7 @@ class _EmailInput extends StatelessWidget {
 class _PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocBuilder<LoginCubit, LoginState>(
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
@@ -73,9 +75,8 @@ class _PasswordInput extends StatelessWidget {
           onChanged: (password) => context.read<LoginCubit>().passwordChanged(password),
           obscureText: true,
           decoration: InputDecoration(
-            labelText: 'password',
-            helperText: '',
-            errorText: state.password.invalid ? 'invalid password' : null,
+            labelText: l10n.password,
+            errorText: state.password.invalid ? l10n.wrong_password : null,
           ),
         );
       },
@@ -86,6 +87,7 @@ class _PasswordInput extends StatelessWidget {
 class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocBuilder<LoginCubit, LoginState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
@@ -100,7 +102,7 @@ class _LoginButton extends StatelessWidget {
                   primary: const Color(0xFFFFD600),
                 ),
                 onPressed: state.status.isValidated ? () => context.read<LoginCubit>().logInWithCredentials() : null,
-                child: const Text('LOGIN'),
+                child: Text(l10n.login),
               );
       },
     );
@@ -110,12 +112,13 @@ class _LoginButton extends StatelessWidget {
 class _GoogleLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final theme = Theme.of(context);
     return ElevatedButton.icon(
       key: const Key('loginForm_googleLogin_raisedButton'),
-      label: const Text(
-        'SIGN IN WITH GOOGLE',
-        style: TextStyle(color: Colors.white),
+      label: Text(
+        l10n.sign_with_google,
+        style: const TextStyle(color: Colors.white),
       ),
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
@@ -132,12 +135,13 @@ class _GoogleLoginButton extends StatelessWidget {
 class _SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final theme = Theme.of(context);
     return TextButton(
       key: const Key('loginForm_createAccount_flatButton'),
       onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
       child: Text(
-        'CREATE ACCOUNT',
+        l10n.create_account,
         style: TextStyle(color: theme.primaryColor),
       ),
     );

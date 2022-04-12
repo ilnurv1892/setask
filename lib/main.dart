@@ -16,6 +16,7 @@ Future<void> main() {
 
       final authenticationRepository = AuthenticationRepository();
       await authenticationRepository.user.first;
+
       runApp(App(authenticationRepository: authenticationRepository));
     },
     blocObserver: AppBlocObserver(),
