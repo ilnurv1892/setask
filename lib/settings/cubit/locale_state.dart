@@ -1,6 +1,6 @@
 part of 'locale_cubit.dart';
 
-abstract class LocaleState {
+abstract class LocaleState extends Equatable {
   final Locale locale;
 
   LocaleState(this.locale);
@@ -8,4 +8,7 @@ abstract class LocaleState {
 
 class SelectedLocale extends LocaleState {
   SelectedLocale(Locale locale) : super(locale);
+
+  @override
+  List<Object> get props => [locale];
 }
