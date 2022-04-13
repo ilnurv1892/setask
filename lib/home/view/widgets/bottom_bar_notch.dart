@@ -7,7 +7,7 @@ class SeBottomBarNotch extends NotchedShape {
   Path getOuterPath(Rect host, Rect? guest) {
     if (guest == null || !host.overlaps(guest)) return Path()..addRect(host);
 
-    final double notchRadius = guest.width / 2.0;
+    final double notchRadius = guest.width / 2;
 
     const double s1 = 15.0;
     const double s2 = 1.0;

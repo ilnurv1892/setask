@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SeBottomAppBarButton extends StatelessWidget {
-  const SeBottomAppBarButton({Key? key}) : super(key: key);
+  const SeBottomAppBarButton({Key? key, required this.onTap}) : super(key: key);
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 80,
       width: 80,
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(50),
+      child: FittedBox(
+        child: FloatingActionButton(
+          elevation: 10,
+          key: const Key('homeView_add_task'),
+          onPressed: () {
+            HapticFeedback.selectionClick();
+            onTap();
+          },
+          child: const Icon(Icons.add),
+        ),
       ),
-      // child: IconButton(
-      //   icon: const Icon(Icons.add),
-      // ),
     );
   }
 }
