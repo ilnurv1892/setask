@@ -26,6 +26,11 @@
     "sign_up_app_bar":"Регистрация",
 
     "confirm_password":"Подтвердите пароль",
-    "password_not_match":"Пароли не совпадают"
+    "password_not_match":"Пароли не совпадают",
 
+    "profile":"Профиль",
+    "incoming":"Входящие",
+    "outgoing":"Исходящие",
+    "bottom_bar_home":"Домой"
+   
   }

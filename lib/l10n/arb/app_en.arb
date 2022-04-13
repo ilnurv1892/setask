@@ -25,7 +25,12 @@
     "sign_up_app_bar":"SIGN UP",
 
     "confirm_password":"Confirm password",
-    "password_not_match":"Password not match"
+    "password_not_match":"Password not match",
+
+    "profile":"Profile",
+    "incoming":"Incoming",
+    "outgoing":"Outgoing",
+    "bottom_bar_home":"Home"
    
    
   }
