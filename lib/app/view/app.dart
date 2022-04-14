@@ -8,20 +8,29 @@ import 'package:setask/settings/cubit/locale_cubit.dart';
 import 'package:setask/app/routes/routes.dart';
 import 'package:setask/settings/cubit/theme_cubit.dart';
 import 'package:setask/l10n/l10n.dart';
+import 'package:task_repository/src/task_repository.dart';
 
 class App extends StatelessWidget {
   const App({
     Key? key,
-    required AuthenticationRepository authenticationRepository,
-  })  : _authenticationRepository = authenticationRepository,
-        super(key: key);
+    required this.authenticationRepository,
+    required this.taskRepository,
+  }) : super(key: key);
 
-  final AuthenticationRepository _authenticationRepository;
+  final AuthenticationRepository authenticationRepository;
+  final TaskRepository taskRepository;
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: _authenticationRepository,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider.value(
+          value: authenticationRepository,
+        ),
+        RepositoryProvider.value(
+          value: taskRepository,
+        )
+      ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider<LocaleCubit>(
@@ -29,7 +38,7 @@ class App extends StatelessWidget {
           ),
           BlocProvider<AppBloc>(
             create: (BuildContext context) => AppBloc(
-              authenticationRepository: _authenticationRepository,
+              authenticationRepository: authenticationRepository,
             ),
           ),
           BlocProvider<ThemeCubit>(

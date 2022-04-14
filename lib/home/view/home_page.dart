@@ -25,7 +25,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    double width = MediaQuery.of(context).size.width;
 
     return BlocProvider(
         create: (context) => HomeNavigationCubit(),

@@ -37,7 +37,10 @@ dependencies:
   flutter_localizations:
       sdk: flutter
   shared_preferences: ^2.0.13
-
+  task_repository:
+    path: packages/task_repository
+  firebase_task_data_api:
+    path: packages/firebase_task_data_api
 
 dev_dependencies:
   flutter_test:
