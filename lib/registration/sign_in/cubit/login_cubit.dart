@@ -1,13 +1,14 @@
-import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
+import 'package:firebase_repository/authentication_repository.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:setask/registration/sign_in/cubit/login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._authenticationRepository) : super(const LoginState());
+  LoginCubit(this._authenticationRepository, this._userRepository) : super(const LoginState());
 
   final AuthenticationRepository _authenticationRepository;
+  final UserRepository _userRepository;
 
   void emailChanged(String value) {
     final email = Email.dirty(value);

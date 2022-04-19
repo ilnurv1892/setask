@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firebase_task_data_api/firebase_task_data_api.dart';
+import 'package:firebase_repository/authentication_repository.dart';
 import 'package:task_repository/task_repository.dart';
 
 part 'task_event.dart';
@@ -16,7 +16,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskInitial> {
     TaskViewSubscriptionRequest event,
     Emitter<TaskInitial> emit,
   ) async {
-    await emit.forEach<List<Task>>(
+    await emit.forEach<List<TaskModel>>(
       _taskRepository.getTaskList(),
       onData: (data) {
         return state.copyWith(status: () => TaskStatus.success, task: () => data);

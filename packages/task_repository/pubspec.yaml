@@ -7,8 +7,8 @@ environment:
   sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
-  firebase_task_data_api:
-    path: ../firebase_task_data_api
+  firebase_repository:
+    path: ..//firebase_repository
 
 
 dev_dependencies:

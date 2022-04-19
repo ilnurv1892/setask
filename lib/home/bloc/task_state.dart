@@ -4,13 +4,13 @@ enum TaskStatus { initial, loading, success, failure }
 
 class TaskInitial extends Equatable {
   final TaskStatus status;
-  final List<Task> task;
+  final List<TaskModel> task;
 
   TaskInitial({this.status = TaskStatus.initial, this.task = const []});
 
   TaskInitial copyWith({
     TaskStatus Function()? status,
-    List<Task> Function()? task,
+    List<TaskModel> Function()? task,
   }) {
     return TaskInitial(
       status: status != null ? status() : this.status,

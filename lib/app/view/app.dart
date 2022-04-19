@@ -1,4 +1,4 @@
-import 'package:authentication_repository/authentication_repository.dart';
+import 'package:firebase_repository/authentication_repository.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,17 +8,19 @@ import 'package:setask/settings/cubit/locale_cubit.dart';
 import 'package:setask/app/routes/routes.dart';
 import 'package:setask/settings/cubit/theme_cubit.dart';
 import 'package:setask/l10n/l10n.dart';
-import 'package:task_repository/src/task_repository.dart';
+import 'package:task_repository/task_repository.dart';
 
 class App extends StatelessWidget {
   const App({
     Key? key,
     required this.authenticationRepository,
     required this.taskRepository,
+    required this.userRepository,
   }) : super(key: key);
 
   final AuthenticationRepository authenticationRepository;
   final TaskRepository taskRepository;
+  final UserRepository userRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,8 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider.value(
           value: taskRepository,
-        )
+        ),
+        RepositoryProvider.value(value: userRepository)
       ],
       child: MultiBlocProvider(
         providers: [

@@ -1,8 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setask/app/bloc/app_bloc.dart';
-import 'package:setask/home/bloc/task_bloc.dart';
-import 'package:task_repository/task_repository.dart';
+import 'package:setask/home/bloc/user_bloc.dart';
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({Key? key}) : super(key: key);
@@ -11,33 +11,22 @@ class TeamScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = context.select((AppBloc bloc) => bloc.state.user);
 
-    return BlocProvider(
-      create: (context) => TaskBloc(
-        context.read<TaskRepository>(),
-      )..add(const TaskViewSubscriptionRequest()),
-      child: BlocListener<TaskBloc, TaskInitial>(
-        listener: (context, state) {
-          print(state.task[0].owner);
-        },
-        child: BlocBuilder<TaskBloc, TaskInitial>(
-          builder: (context, state) {
-            if (state.status == TaskStatus.success) {
-              return Center(
-                child: ListView(children: [
-                  ...state.task.map((e) => Text(e.owner.toString())).toList(),
-                  ...state.task.map((e) => Text(e.team.toString())).toList(),
-                  ...state.task.map((e) => Text(e.title.toString())).toList(),
-                  ...state.task.map((e) => Text(e.uid.toString())).toList(),
-                ]),
-              );
-            }
-
-            return Center(
-              child: Text("empty"),
-            );
-          },
-        ),
-      ),
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        context.read<UserBloc>().add(FetchEvent(user));
+        return Center(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(state.user.name.toString()),
+            Text(state.user.team_id.toString()),
+            Text(state.user.email.toString()),
+            Text(state.user.pts.toString()),
+            Text(state.user.team_members.toString()),
+          ],
+        ));
+      },
     );
   }
 }

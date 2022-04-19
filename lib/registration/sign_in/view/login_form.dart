@@ -127,10 +127,18 @@ class _GoogleLoginButton extends StatelessWidget {
         primary: theme.colorScheme.secondary,
       ),
       icon: const Icon(FontAwesomeIcons.google, color: Colors.white),
-      onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
+      onPressed: () {
+        context.read<LoginCubit>().logInWithGoogle();
+      },
     );
   }
 }
+
+@override
+void init() {}
+
+@override
+void dispose() {}
 
 class _SignUpButton extends StatelessWidget {
   @override

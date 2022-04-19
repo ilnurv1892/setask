@@ -1,4 +1,4 @@
-import 'package:firebase_task_data_api/firebase_task_data_api.dart';
+import 'package:firebase_repository/authentication_repository.dart';
 
 /// {@template task_repository}
 /// repository for tasks
@@ -11,5 +11,5 @@ class TaskRepository {
 
   final TaskApi taskApi;
 
-  Stream<List<Task>> getTaskList() => taskApi.getTask();
+  Stream<List<TaskModel>> getTaskList() => taskApi.getTask();
 }

@@ -30,8 +30,8 @@ dependencies:
   flow_builder: ^0.0.6
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
-  authentication_repository:
-    path: packages/authentication_repository
+  firebase_repository:
+    path: packages/firebase_repository
   form_inputs:
     path: packages/form_inputs
   flutter_localizations:
@@ -39,8 +39,7 @@ dependencies:
   shared_preferences: ^2.0.13
   task_repository:
     path: packages/task_repository
-  firebase_task_data_api:
-    path: packages/firebase_task_data_api
+
 
 dev_dependencies:
   flutter_test:
