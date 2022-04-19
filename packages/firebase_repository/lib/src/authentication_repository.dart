@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:authentication_repository/src/models/user.dart';
 import 'package:cache/cache.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+import 'package:firebase_repository/authentication_repository.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
@@ -180,18 +180,20 @@ class AuthenticationRepository {
   /// the authentication state changes.
   ///
   /// Emits [User.empty] if the user is not authenticated.
-  Stream<User> get user {
+  Stream<UserModel> get user {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
-      final user = firebaseUser == null ? User.empty : firebaseUser.toUser;
+      final user = firebaseUser == null ? UserModel.empty : firebaseUser.toUser;
+
       _cache.write(key: userCacheKey, value: user);
+
       return user;
     });
   }
 
   /// Returns the current cached user.
   /// Defaults to [User.empty] if there is no cached user.
-  User get currentUser {
-    return _cache.read<User>(key: userCacheKey) ?? User.empty;
+  UserModel get currentUser {
+    return _cache.read<UserModel>(key: userCacheKey) ?? UserModel.empty;
   }
 
   /// Creates a new user with the provided [email] and [password].
@@ -230,8 +232,7 @@ class AuthenticationRepository {
           idToken: googleAuth.idToken,
         );
       }
-
-      await _firebaseAuth.signInWithCredential(credential);
+      final credentials = await _firebaseAuth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw LogInWithGoogleFailure.fromCode(e.code);
     } catch (_) {
@@ -247,7 +248,7 @@ class AuthenticationRepository {
     required String password,
   }) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      final credentials = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -275,8 +276,8 @@ class AuthenticationRepository {
 }
 
 extension on firebase_auth.User {
-  User get toUser {
-    return User(
+  UserModel get toUser {
+    return UserModel(
       id: uid,
       email: email,
       name: displayName,

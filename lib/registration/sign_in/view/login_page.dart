@@ -1,4 +1,4 @@
-import 'package:authentication_repository/authentication_repository.dart';
+import 'package:firebase_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setask/l10n/l10n.dart';
@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: BlocProvider(
-          create: (_) => LoginCubit(context.read<AuthenticationRepository>()),
+          create: (_) => LoginCubit(context.read<AuthenticationRepository>(), context.read<UserRepository>()),
           child: const LoginForm(),
         ),
       ),

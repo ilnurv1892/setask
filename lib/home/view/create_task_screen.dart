@@ -10,7 +10,7 @@ class SeCreateTask extends StatelessWidget {
         appBar: AppBar(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: SeBottomAppBarButton(
-          onTap: () => null,
+          onTap: () {},
         ));
   }
 }
