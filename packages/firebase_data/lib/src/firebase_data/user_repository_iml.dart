@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_repository/authentication_repository.dart';
-import 'package:firebase_repository/src/models/team_model.dart';
+import 'package:domain/task_repository.dart';
 
-class UserRepository {
+class UserRepositoryIml extends UserRepository {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future storeNewUser(UserModel user) async {

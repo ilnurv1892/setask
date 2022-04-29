@@ -1,11 +1,11 @@
+import 'package:domain/task_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_repository/authentication_repository.dart';
+import 'package:firebase_data/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:setask/app/bloc_observer.dart';
 import 'package:setask/app/view/app.dart';
 import 'package:setask/firebase_options.dart';
-import 'package:task_repository/task_repository.dart';
 
 Future<void> main() {
   return BlocOverrides.runZoned(
@@ -15,11 +15,11 @@ Future<void> main() {
         options: DefaultFirebaseOptions.currentPlatform,
       );
 
-      final authenticationRepository = AuthenticationRepository();
+      final authenticationRepository = AuthenticationRepositoryIml();
       await authenticationRepository.user.first;
 
-      final taskRepository = TaskRepository(taskApi: TaskDataApi());
-      final userRepository = UserRepository();
+      final taskRepository = TaskRepositoryImpl();
+      final userRepository = UserRepositoryIml();
 
       runApp(App(
         authenticationRepository: authenticationRepository,

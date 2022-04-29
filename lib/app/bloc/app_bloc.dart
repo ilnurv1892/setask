@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:domain/task_repository.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firebase_repository/authentication_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:very_good_analysis/very_good_analysis.dart';
 
