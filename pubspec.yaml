@@ -30,15 +30,15 @@ dependencies:
   flow_builder: ^0.0.6
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
-  firebase_repository:
-    path: packages/firebase_repository
+  firebase_data:
+    path: packages/firebase_data
   form_inputs:
     path: packages/form_inputs
   flutter_localizations:
       sdk: flutter
   shared_preferences: ^2.0.13
-  task_repository:
-    path: packages/task_repository
+  domain:
+    path: packages/domain
 
 
 dev_dependencies:

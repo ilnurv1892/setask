@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:firebase_repository/authentication_repository.dart';
+import 'package:domain/task_repository.dart';
+import 'package:firebase_data/authentication_repository.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:setask/registration/sign_in/cubit/login_state.dart';

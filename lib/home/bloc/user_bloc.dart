@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:domain/task_repository.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firebase_repository/authentication_repository.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';

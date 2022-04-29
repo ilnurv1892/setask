@@ -1,4 +1,4 @@
-import 'package:firebase_repository/authentication_repository.dart';
+import 'package:domain/task_repository.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +8,6 @@ import 'package:setask/settings/cubit/locale_cubit.dart';
 import 'package:setask/app/routes/routes.dart';
 import 'package:setask/settings/cubit/theme_cubit.dart';
 import 'package:setask/l10n/l10n.dart';
-import 'package:task_repository/task_repository.dart';
 
 class App extends StatelessWidget {
   const App({

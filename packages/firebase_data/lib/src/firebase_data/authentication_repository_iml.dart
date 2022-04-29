@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:cache/cache.dart';
+import 'package:domain/task_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
-import 'package:firebase_repository/authentication_repository.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
@@ -151,9 +151,9 @@ class LogOutFailure implements Exception {}
 /// {@template authentication_repository}
 /// Repository which manages user authentication.
 /// {@endtemplate}
-class AuthenticationRepository {
+class AuthenticationRepositoryIml implements AuthenticationRepository {
   /// {@macro authentication_repository}
-  AuthenticationRepository({
+  AuthenticationRepositoryIml({
     CacheClient? cache,
     firebase_auth.FirebaseAuth? firebaseAuth,
     GoogleSignIn? googleSignIn,
@@ -232,7 +232,7 @@ class AuthenticationRepository {
           idToken: googleAuth.idToken,
         );
       }
-      final credentials = await _firebaseAuth.signInWithCredential(credential);
+      await _firebaseAuth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw LogInWithGoogleFailure.fromCode(e.code);
     } catch (_) {
@@ -248,7 +248,7 @@ class AuthenticationRepository {
     required String password,
   }) async {
     try {
-      final credentials = await _firebaseAuth.signInWithEmailAndPassword(
+      await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );

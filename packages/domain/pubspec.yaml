@@ -1,14 +1,14 @@
-name: task_repository
-description: repository for tasks
+name: domain
+description: domain layer
 version: 1.0.0+1
 publish_to: none
 
 environment:
   sdk: ">=2.16.0 <3.0.0"
 
-dependencies:
-  firebase_repository:
-    path: ..//firebase_repository
+
+dependencies: 
+  equatable: ^2.0.3
 
 
 dev_dependencies:
